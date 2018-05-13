@@ -38,6 +38,7 @@ apt install i3 i3-wm i3lock i3status i3bar
 
 cd /opt
 ### clone the repository
+apt install libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps
 
@@ -51,10 +52,11 @@ mkdir -p build && cd build/
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 make
 make install
-cd ..
+cd ../..
 
 ## bumblebee status
 git clone git://github.com/tobi-wan-kenobi/bumblebee-status ~/.config/i3/bumblebee-status
+pip install netifaces
 
 ## rofi
 git clone https://github.com/DaveDavenport/rofi
@@ -70,6 +72,7 @@ cd ../..
 
 ## ranger
 git clone https://github.com/ranger/ranger
+cd ranger
 sudo make install
 sudo python setup.py install --optimize=1 --record=install_log.txt
 cd ..
@@ -80,3 +83,17 @@ cd dotfiles
 cp -r i3/ ~/.config
 cp vim/.vimrc ~/.vimrc
 cp zsh/.zshrc ~/.zshrc
+
+## Nerdfonts
+git clone https://github.com/ryanoasis/nerd-fonts
+cd nerd-fonts
+./install.sh
+cd ..
+
+
+## Virtualenvwrapper
+
+pip install virtualenv
+mkdir ~/.virtualenvs
+pip install virtualenvwrapper
+
